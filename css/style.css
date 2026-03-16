@@ -1,0 +1,304 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: sans-serif;
+    background: linear-gradient(135deg,#0f1021,#1a1b3a,#3b3f8c);
+    color: white;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before{
+content:"";
+position:fixed;
+top:80px;
+left:50%;
+transform:translateX(-50%);
+width:420px;
+height:420px;
+border-radius:50%;
+
+background:
+radial-gradient(circle at center,
+rgba(248, 224, 6, 0.35) 10%,
+rgba(247, 3, 97, 0.25) 80%,
+rgba(255, 251, 0, 0.1) 65%,
+transparent 75%
+);
+
+mask-image: repeating-linear-gradient(
+to bottom,
+black 0px,
+black 8px,
+transparent 8px,
+transparent 16px
+);
+
+opacity:0.30;
+z-index:-1;
+}
+
+body::after{
+content:"";
+position:fixed;
+bottom:-150px;
+left:0;
+width:100%;
+height:80%;
+
+background-image:
+linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+
+background-size:80px 80px;
+
+opacity:0.95;
+
+transform:perspective(600px) rotateX(65deg);
+
+z-index:-1;
+}
+
+/* body::before e body::after feito com ajuda do chat gpt
+para fazer o efeito de sol e a grade do site.
+Apesar disso, tentei mexer nos valores para entender o que cada modificador faz*/
+
+.palmeira-esquerda{
+    position:fixed;
+    bottom:0;
+    left:-350px;
+    height:80vh;
+    opacity:0.25;
+    pointer-events:none;
+    z-index:-2;
+}
+
+.palmeira-direita{
+    position:fixed;
+    bottom:0;
+    right:-350px;
+    height:80vh;
+    transform:scaleX(-1);
+    opacity:0.25;
+    pointer-events:none;
+    z-index:-2;
+}
+
+.container{
+    width: 85%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+header{
+    background: rgba(0,0,0,0.25);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255,0.1);
+}
+
+.conteudo-header{
+    display: flex;
+    justify-content:center;
+    padding: 20px 0;
+}
+
+.logo{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: #f1b74b;
+    text-shadow: 0 0 10px rgb(235, 77, 195);
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.noticia-main{
+    margin-top: 40px;
+    background: linear-gradient(135deg,#5865f2,#404eed);
+    border-radius: 14px;
+    padding: 40px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.4);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.noticia-main:hover{
+    transform: scale(1.03);
+    box-shadow: 0 15px 40px rgba(255,255,255,0.05);
+    cursor: pointer;
+    
+}
+
+.noticia-main h2{
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.noticia-main p{
+    opacity: 0.9;
+    font-size: 16px;
+    max-width: 700px;
+}
+
+.noticia-destaque{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.imagem-main{
+    width: 420px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.texto-main h1{
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.texto-main p{
+    font-size: 16px;
+    opacity: 0.9;
+    max-width: 500px;
+}
+
+.titulo-sessao{
+    margin-top: 50px;
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: 500;
+    border-left: 4px solid #7289da;
+    padding-left: 12px;
+}
+
+.grade{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap: 25px;
+}
+
+.card{
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 20px;
+    border-radius: 12px;
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.card:hover{
+    transform: translateY(-6px);
+    background: rgba(255,255,255,0.08);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.card img{
+    width: 100%;
+    height: 120px;
+    object-fit:cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.card h3{
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.card p{
+    opacity: 0.8;
+    font-size: 14px;
+}
+
+.recente{
+    margin-top: 20px;
+    background: rgba(255, 255, 255,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    list-style: none;
+}
+
+.recente li{
+    padding: 18px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    transition: 0.2s;
+}
+
+.recente li:hover{
+    background: rgba(255,255,255,0.07);
+}
+
+.recente li:last-child{
+    border-bottom: none;
+}
+
+footer{
+    margin-top: 60px;
+    background: rgba(0,0,0,0.35);
+    padding: 30px 0;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.imagem-main{
+    width: 600px;
+}
+
+.pagina-noticia{
+    max-width: 800px;
+    margin: 60px auto;
+}
+
+.titulo-noticia{
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.imagem-noticia{
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.conteudo-noticia p{
+    font-size: 20px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.primeiro-paragrafo{
+    margin-top: 40px;
+}
+
+.conteudo-noticia h2{
+    margin-top: 35px;
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.botao-voltar{
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 13px;
+    opacity: 0.8;
+    padding: 8px 14px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: 0.2s;
+}
+
+.botao-voltar:hover{
+    opacity: 1;
+    background: rgba(255,255,255,0.15);
+    transform: translateX(-3px);
+}
